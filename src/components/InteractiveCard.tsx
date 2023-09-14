@@ -2,9 +2,7 @@
 
 export default function InteractiveCard({ children, contentName }:{children: React.ReactNode, contentName : string }) {
 
-    function onCardSelected(){
-        alert("You Select " + contentName)
-    }
+    
 
     function onCardMouseAction(event : React.SyntheticEvent){
         if(event.type == 'mouseover'){
@@ -21,8 +19,7 @@ export default function InteractiveCard({ children, contentName }:{children: Rea
         }
     }
     return (
-        <div className='w-1/5 h-[300px] rounded-lg shadow-lg' 
-        onClick={() => onCardSelected()}
+        <div className='w-1/5 h-[350px] rounded-lg shadow-lg' 
         onMouseOver={ (e)=>onCardMouseAction(e)}
         onMouseOut={ (e) => onCardMouseAction(e)}>
             { children }
