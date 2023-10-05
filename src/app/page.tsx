@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={notoSansThai.className}>
       <Banner />
-      <CardPanel/>
+      
       
       
     </main>

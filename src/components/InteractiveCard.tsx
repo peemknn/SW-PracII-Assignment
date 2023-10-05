@@ -19,7 +19,7 @@ export default function InteractiveCard({ children, contentName }:{children: Rea
         }
     }
     return (
-        <div className='w-1/5 h-[350px] rounded-lg shadow-lg' 
+        <div className='h-[350px] rounded-lg shadow-lg' 
         onMouseOver={ (e)=>onCardMouseAction(e)}
         onMouseOut={ (e) => onCardMouseAction(e)}>
             { children }

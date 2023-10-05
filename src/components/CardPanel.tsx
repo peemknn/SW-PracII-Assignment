@@ -1,6 +1,7 @@
 "use client";
 import InfoCard from "./InfoCard";
 import { useReducer } from "react";
+import Link from "next/link";
 
 export default function CardPanel() {
   const compareReducer = (
@@ -25,42 +26,41 @@ export default function CardPanel() {
     new Map<string, string>()
   );
 
+  const mockHospitalRepo = [
+    {
+      hid: "001",
+      hospitalName: "Chulalongkorn Hospital",
+      image: "/img/chula.jpg",
+      
+    },
+    {
+      hid: "002",
+      hospitalName: "Rajavithi Hospital",
+      image: "/img/rajavithi.jpg",
+      
+    },
+    {
+      hid: "003",
+      hospitalName: "Thammasat Hospital",
+      image: "/img/thammasat.jpg",
+      
+    }
+  ];
+
   return (
     <div>
       <div className="m-20 flex flex-row content-around justify-around flex-wrap">
-        <InfoCard
-          hospitalName="Chulalongkorn Hospital"
-          imgSrc="/img/chula.jpg"
-          onCompare={(hospital: string, rating: string) =>
-            dispatchCompare({
-              type: "add",
-              hospitalName: hospital,
-              value: rating,
-            })
-          }
-        />
-        <InfoCard
-          hospitalName="Rajavithi Hospital"
-          imgSrc="/img/rajavithi.jpg"
-          onCompare={(hospital: string, rating: string) =>
-            dispatchCompare({
-              type: "add",
-              hospitalName: hospital,
-              value: rating,
-            })
-          }
-        />
-        <InfoCard
-          hospitalName="Thammasat Hospital"
-          imgSrc="/img/thammasat.jpg"
-          onCompare={(hospital: string, rating: string) =>
-            dispatchCompare({
-              type: "add",
-              hospitalName: hospital,
-              value: rating,
-            })
-          }
-        />
+        {mockHospitalRepo.map((hospitalItem) => (
+          <Link href={`/hospital/${hospitalItem.hid}`} className="w-1/5">
+          <InfoCard
+            hospitalName={hospitalItem.hospitalName}
+            imgSrc={hospitalItem.image}
+            onCompare={(hospital: string, rating : string) =>
+              dispatchCompare({ type: "add", hospitalName: hospital , value : rating})
+            }
+          />
+        </Link>
+        ))}
       </div>
       <div className="w-full text-xl font-md font-primary">
         Hospital List: {compareList.size}
