@@ -5,7 +5,7 @@ import { LinearProgress } from "@mui/material";
 import HospitalCatalog from "@/components/HospitalCatalog";
 
 export default function Hospital() {
-  const hospitals = getHospitals()
+  const hospitals = getHospitals();
 
   return (
     <main className="text-center p-5">
@@ -20,7 +20,6 @@ export default function Hospital() {
       >
         <HospitalCatalog hospitalJson={hospitals} />
       </Suspense>
-      
     </main>
   );
 }
