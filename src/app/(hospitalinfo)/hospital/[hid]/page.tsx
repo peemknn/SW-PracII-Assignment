@@ -1,12 +1,13 @@
 import getHospital from "@/libs/getHospital";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function hospitalDetailPage({
   params,
 }: {
   params: { hid: string };
 }) {
-  const hospitalDetail = await getHospital(params.hid)
+  const hospitalDetail = await getHospital(params.hid);
 
   return (
     <main className="text-center p-5">
@@ -27,6 +28,13 @@ export default async function hospitalDetailPage({
           <div>Province: {hospitalDetail.data.province}</div>
           <div>Postal Code: {hospitalDetail.data.postalcode}</div>
           <div>Telephone: {hospitalDetail.data.tel}</div>
+          <Link
+            href={`/booking?id=${params.hid}&name=${hospitalDetail.data.name}`}
+          >
+            <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-1 text-white shadow-sm">
+              Make Booking
+            </button>
+          </Link>
         </div>
       </div>
     </main>
