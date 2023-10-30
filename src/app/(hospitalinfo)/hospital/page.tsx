@@ -1,10 +1,10 @@
-import CardPanel from "@/components/CardPanel";
 import getHospitals from "@/libs/getHospitals";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
 import HospitalCatalog from "@/components/HospitalCatalog";
+import AddHospital from "@/components/AddHospital";
 
-export default function Hospital() {
+export default async function Hospital() {
   const hospitals = getHospitals();
 
   return (
@@ -19,6 +19,7 @@ export default function Hospital() {
         }
       >
         <HospitalCatalog hospitalJson={hospitals} />
+        <AddHospital></AddHospital>
       </Suspense>
     </main>
   );
